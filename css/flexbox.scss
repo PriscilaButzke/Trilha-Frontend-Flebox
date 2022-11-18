@@ -1,0 +1,120 @@
+$screen-xsm-max: 689px;
+// Small devices
+@mixin xsm {
+    @media (max-width: #{$screen-xsm-max}) {
+        @content;
+    }
+}
+
+$screen-sm-max: 936px;
+// Small devices
+@mixin sm {
+    @media (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+}
+
+.cabecalhoPrincipal {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include xsm {
+            flex-direction: column;
+            align-items: initial;
+            text-align: center;
+        }
+    }
+}
+
+.cabecalhoPrincipal-nav {
+    display: flex;
+
+    @include xsm {
+        flex-direction: column;
+    }
+}
+
+
+.rodapePrincipal-patrocinadores {
+    .container {
+        display: flex;
+        justify-content: space-between;
+
+        @include sm {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+    }
+}
+.rodapePrincipal-patrocinadores {
+    .container {
+        .rodapePrincipal-patrocinadores-list {
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: space-around;
+            margin-right: 5%;
+
+            @include sm {
+                align-items: center;
+                margin-right: -6%;
+            }
+        }
+    }
+}
+.rodapePrincipal-contatoForm {
+    width: 30%;
+
+    @include sm {
+        display: flex;
+        flex-flow: column wrap;
+    }
+}
+.rodapePrincipal-contatoForm-fieldset {
+    display: flex;
+}
+
+.rodapePrincipal {
+    width: 100%;
+}
+
+.subtitulo {
+    @include sm {
+        text-align: center;
+    }
+}
+.rodapePrincipal-navMap-list {
+    display: flex;
+    /*flex-direction: column;
+    flex-wrap: wrap;
+    
+    o flex-flow, substitui ambos os comandos acima*/
+    flex-flow: column wrap;
+    height: 180px;
+
+    @include sm {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        height: 100%;
+    }
+}
+
+.conteudoPrincipal-cursos {
+    display: flex;
+    flex-wrap: wrap;
+}
+.conteudoPrincipal-cursos-link {
+    width: 23%;
+}
+// seleciona os elementos multiplos de x
+.conteudoPrincipal-cursos-link:nth-child(4n) {
+    margin-right: 0;
+}
+// multiplos de 4 + 1, porém começa em 0, então arruma o 1° elemento também
+.conteudoPrincipal-cursos-link:nth-child(4n + 1) {
+    margin-left: 0;
+}
