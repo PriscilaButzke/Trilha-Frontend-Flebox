@@ -1,15 +1,7 @@
-$screen-xsm-max: 689px;
+$screen-xsm-max: 775px;
 // Small devices
 @mixin xsm {
     @media (max-width: #{$screen-xsm-max}) {
-        @content;
-    }
-}
-
-$screen-sm-max: 936px;
-// Small devices
-@mixin sm {
-    @media (max-width: #{$screen-sm-max}) {
         @content;
     }
 }
@@ -36,15 +28,20 @@ $screen-sm-max: 936px;
     }
 }
 
+.cabecalhoPrincipal-nav-link-app {
+    @include xsm {
+        order: -1;
+        //faz com o item do menu "Nosso APP" na versão mobile, fique em primeiro lugar na lista
+    }
+}
 
 .rodapePrincipal-patrocinadores {
     .container {
         display: flex;
         justify-content: space-between;
 
-        @include sm {
-            display: flex;
-            flex-flow: column nowrap;
+        @include xsm {
+            flex-direction: column;
             align-items: center;
         }
     }
@@ -58,9 +55,9 @@ $screen-sm-max: 936px;
             justify-content: space-around;
             margin-right: 5%;
 
-            @include sm {
-                align-items: center;
-                margin-right: -6%;
+            @include xsm {
+                margin: 0;
+                width: 100%;
             }
         }
     }
@@ -68,13 +65,16 @@ $screen-sm-max: 936px;
 .rodapePrincipal-contatoForm {
     width: 30%;
 
-    @include sm {
-        display: flex;
-        flex-flow: column wrap;
+    @include xsm {
+        width: 100%;
     }
 }
 .rodapePrincipal-contatoForm-fieldset {
     display: flex;
+
+    @include xsm {
+        justify-content: center;
+    }
 }
 
 .rodapePrincipal {
@@ -82,7 +82,7 @@ $screen-sm-max: 936px;
 }
 
 .subtitulo {
-    @include sm {
+    @include xsm {
         text-align: center;
     }
 }
@@ -95,20 +95,25 @@ $screen-sm-max: 936px;
     flex-flow: column wrap;
     height: 180px;
 
-    @include sm {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        height: 100%;
+    @include xsm {
+        height: auto;
     }
 }
 
 .conteudoPrincipal-cursos {
     display: flex;
     flex-wrap: wrap;
+
+    @include xsm {
+        flex-direction: column;
+    }
 }
 .conteudoPrincipal-cursos-link {
     width: 23%;
+
+    @include xsm {
+        width: 100%;
+    }
 }
 // seleciona os elementos multiplos de x
 .conteudoPrincipal-cursos-link:nth-child(4n) {
@@ -117,4 +122,35 @@ $screen-sm-max: 936px;
 // multiplos de 4 + 1, porém começa em 0, então arruma o 1° elemento também
 .conteudoPrincipal-cursos-link:nth-child(4n + 1) {
     margin-left: 0;
+}
+
+.videoSobre {
+    .container {
+        display: flex;
+        justify-content: space-between;
+
+        @include xsm {
+            flex-direction: column;
+        }
+    }
+}
+.videoSobre-sobre {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2; // faz com que essa div menor ocupe o restante do espaço sobrando da div maior
+}
+.videoSobre-video {
+    flex-grow: 1;
+    flex-shrink: 2; //conforme diminui a tela o video diminui 2x mais que o restante da div
+
+    @include xsm {
+        margin: 0 auto;
+    }
+}
+.videoSobre-sobre-list {
+    flex-grow: 1;
+}
+.videoSobre-button {
+    margin-left: 4%;
 }
